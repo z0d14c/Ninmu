@@ -1,3 +1,6 @@
+// Main Menu activity
+// Handles access to session activity, settings activity
+// and provides a pretty splash screen :)
 package tgrice.utdallas.edu.ninmu;
 
 import android.app.Activity;
