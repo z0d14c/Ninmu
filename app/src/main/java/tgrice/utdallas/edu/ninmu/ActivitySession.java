@@ -2,6 +2,7 @@
 // Handles work/task sessions and
 package tgrice.utdallas.edu.ninmu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -16,8 +17,10 @@ public class ActivitySession extends AppCompatActivity {
     private TextView timerText; // timer text
     private Handler timerHandler; // handles timer Runnable thread
     private boolean stopped = true; // is the timer paused or not
+    private boolean inSession = true; // if false, means it is currently break time
     private long time = 0; //time elapsed
-    private int sessionMinutes = 15; // minutes in a session, hardcoded for now
+    private int sessionMinutes; // minutes in a session
+    private int breakMinutes;
 
     // bind event listeners to buttons etc.
     @Override
@@ -28,9 +31,14 @@ public class ActivitySession extends AppCompatActivity {
         this.timerButton = (Button) findViewById(R.id.sessionButton);
     }
 
+    // get intent info and bind timerHandler
     @Override
     public void onResume() {
         super.onResume();
+        Intent intent = getIntent();
+        this.sessionMinutes = intent.getIntExtra("session_length", 0);
+        this.breakMinutes = intent.getIntExtra("break_length", 0);
+        timerText.setText(String.valueOf(convertSecondsToTimeString(time)));
         this.timerHandler = new Handler();
         timerButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -66,18 +74,25 @@ public class ActivitySession extends AppCompatActivity {
         public void run(){
             time += 1;
             timerText.setText(String.valueOf(convertSecondsToTimeString(time)));
+            // TODO: add logic for when time runs out.
             timerHandler.postDelayed(this, 1000);
         }
     };
 
     // convert time to readable string
     private String convertSecondsToTimeString(long ms) {
+        Integer relevantTime;
+        if( this.inSession ) {
+            relevantTime = this.sessionMinutes;
+        } else {
+            relevantTime = this.breakMinutes;
+        }
         int minutesDenominator = 60;
         Double secondsRemainder = Math.floor(ms % (minutesDenominator));
         Integer secondsInt = 59 - secondsRemainder.intValue();
         String seconds = secondsInt.toString();
         Double minutesDouble = Math.floor(ms / minutesDenominator);
-        Integer minutesInt = (this.sessionMinutes - 1) - minutesDouble.intValue();
+        Integer minutesInt = (relevantTime - 1) - minutesDouble.intValue();
         String minutes = minutesInt.toString();
         if (secondsInt < 10) {
             seconds = "0" + seconds;
@@ -87,5 +102,9 @@ public class ActivitySession extends AppCompatActivity {
         }
         return minutes + ":" + seconds;
     };
+
+    private void timerRunsOutEvent(){
+
+    }
 
 }

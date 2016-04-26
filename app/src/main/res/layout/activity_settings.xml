@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="tgrice.utdallas.edu.ninmu.SettingsActivity">
-
-</android.support.design.widget.CoordinatorLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:id="@+id/settingTitleLayout">
+        <tgrice.utdallas.edu.ninmu.SpecialTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/settings_name"
+            android:textSize="75sp"
+            android:textAlignment="center"
+            />
+        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:id="@+id/settingOptionsLayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sessionLengthLabel"
+            android:textSize="18sp"
+            android:minHeight="100dp"
+            android:text="@string/session_length_text"
+            android:layout_toLeftOf="@+id/sessionLengthSpinner"
+            >
+        </TextView>
+        <Spinner
+            android:id="@+id/sessionLengthSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
+            android:minHeight="100dp"
+            android:layout_weight="1"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/break_length_text"
+            android:id="@+id/break_length_label"
+            android:textSize="18sp"
+            android:minHeight="100dp"
+            android:layout_toLeftOf="@+id/breakLengthSpinner"
+            android:layout_below="@+id/sessionLengthLabel"
+            >
+        </TextView>
+        <Spinner
+            android:id="@+id/breakLengthSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minWidth="200dp"
+            android:minHeight="100dp"
+            android:layout_below="@id/sessionLengthSpinner"
+            android:layout_centerHorizontal="true"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button_text"
+            android:id="@+id/saveButton"
+            android:layout_below="@id/breakLengthSpinner"
+            android:layout_weight="1"
+            android:minHeight="100dp"
+            android:minWidth="200dp"
+            android:background="@color/colorPrimary3"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+</LinearLayout>

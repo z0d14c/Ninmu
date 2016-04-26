@@ -78,6 +78,8 @@ public class MainActivity extends Activity {
      // launch settings activity
     public void launchSettings(View view) {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        intent.putExtra("session_length", this.sessionLength);
+        intent.putExtra("break_length", this.breakLength);
         startActivity(intent);
     }
 }
