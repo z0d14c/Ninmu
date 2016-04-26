@@ -4,9 +4,13 @@
     <string name="session_activity_name">Session</string>
     <string name="settings_button_text">SETTINGS</string>
     <string name="session_button_text">START SESSION</string>
+    <string name="session_status_text">SESSION</string>
+    <string name="break_status_text">BREAK</string>
     <string name="save_button_text">SAVE</string>
     <string name="start_timer_text">START TIMER</string>
+    <string name="start_break_text">START BREAK</string>
     <string name="stop_timer_text">STOP TIMER</string>
+    <string name="stop_break_text">STOP BREAK</string>
     <string name="title_activity_activity_session">ActivitySession</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="session_length_var">session_length</string>

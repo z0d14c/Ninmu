@@ -16,11 +16,19 @@
         android:id="@+id/logolayout">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textSize="50sp"
             android:id="@+id/timerText"
+            />
+        <tgrice.utdallas.edu.ninmu.SpecialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="75sp"
+            android:id="@+id/statusText"
             />
     </RelativeLayout>
     <RelativeLayout
@@ -46,6 +54,9 @@
             android:layout_height="wrap_content"
             android:text="@string/start_timer_text"
             android:id="@+id/sessionButton"
+            android:minHeight="100dp"
+            android:minWidth="200dp"
+            android:background="@color/colorPrimary1"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </LinearLayout>

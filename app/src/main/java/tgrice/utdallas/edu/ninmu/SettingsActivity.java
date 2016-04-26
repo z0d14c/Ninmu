@@ -102,7 +102,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         ContentValues breakTimeArgs = new ContentValues();
         breakTimeArgs.put("setting_value", this.breakMinutes);
         qdb.update("settings", sessionTimeArgs, "_id=" + sessionLengthDBId, null);
-        qdb.update("settings", breakTimeArgs, "_id=" + sessionLengthDBId,  null);
+        qdb.update("settings", breakTimeArgs, "_id=" + breakLengthDBId,  null);
         // close after use to free up resources.
         sessionLengthCursor.close();
         breakLengthCursor.close();

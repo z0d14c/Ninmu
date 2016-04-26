@@ -41,6 +41,10 @@
             android:text="@string/session_button_text"
             android:id="@+id/sessionButton"
             android:onClick="launchSession"
+            android:minHeight="80dp"
+            android:layout_marginBottom="20dp"
+            android:minWidth="200dp"
+            android:background="@color/colorPrimary1"
             android:layout_centerHorizontal="true" />
         <Button
             android:layout_width="wrap_content"
@@ -48,6 +52,9 @@
             android:text="@string/settings_button_text"
             android:id="@+id/settingsButton"
             android:layout_below="@+id/sessionButton"
+            android:minHeight="80dp"
+            android:minWidth="200dp"
+            android:background="@color/colorPrimary1"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
