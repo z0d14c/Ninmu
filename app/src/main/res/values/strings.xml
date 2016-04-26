@@ -6,4 +6,7 @@
     <string name="start_timer_text">START TIMER</string>
     <string name="stop_timer_text">STOP TIMER</string>
     <string name="title_activity_activity_session">ActivitySession</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="session_length_var">session_length</string>
+    <string name="break_length_var">break_length</string>
 </resources>
