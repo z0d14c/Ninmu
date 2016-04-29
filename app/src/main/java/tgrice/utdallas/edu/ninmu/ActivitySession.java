@@ -34,6 +34,8 @@ public class ActivitySession extends AppCompatActivity {
         this.timerText = (TextView) findViewById(R.id.timerText);
         this.statusText = (TextView) findViewById(R.id.statusText);
         this.timerButton = (Button) findViewById(R.id.sessionButton);
+        this.statusText.setText(R.string.session_status_text
+        );
     }
 
     // get intent info and bind timerHandler
@@ -95,14 +97,14 @@ public class ActivitySession extends AppCompatActivity {
             if (time < timeToCompareTo) { //still going
                 timerHandler.postDelayed(this, 1000);
             } else { //stop session/break!
-                try {
-                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-                    r.play();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                try { // we want to play a sound when timer is up
+                    Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    Ringtone ringtone = RingtoneManager.getRingtone(getApplicationContext(), notificationSound);
+                    ringtone.play();
+                } catch (Exception err0r) {
+                    err0r.printStackTrace();
                 }
-                inSession = !inSession;
+                inSession = !inSession; //toggle session (not in session means its a break)
                 stopped = true;
                 toggleTimerText();
                 timerHandler.removeCallbacks(timerRunnable);
@@ -137,9 +139,5 @@ public class ActivitySession extends AppCompatActivity {
         }
         return minutes + ":" + seconds;
     };
-
-    private void timerRunsOutEvent(){
-
-    }
 
 }
